@@ -97,6 +97,15 @@
         </select>
       </div>
       
+       <div class="form-group">
+        <label for="peregov">Mot du père :</label>
+        <select id="peregov" class="form-control" required>
+          <option value="">-- Sélectionner --</option>
+          <option value="Alpha">Alpha</option>
+          <option value="C'est la femme qui décide">Beta</option>
+        </select>
+      </div>
+      
       <div class="form-group">
         <label for="situation">Situation :</label>
         <select id="situation" class="form-control" required>
@@ -174,6 +183,15 @@
           break;
         case 'Mauvaise':
           totalNote += -15;
+          break;
+      }
+      
+       switch (peregov) {
+        case 'Alpha':
+          totalNote += 20;
+          break;
+        case 'Beta':
+          totalNote += -50;
           break;
       }
       
