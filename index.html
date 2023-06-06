@@ -192,7 +192,7 @@
           totalNote += 20;
           break;
         case 'Beta':
-          totalNote += -50;
+          totalNote += -60;
           break;
       }
       
@@ -226,16 +226,16 @@
       var messageDiv = document.getElementById('message');
       var percentageDiv = document.getElementById('percentage');
       
-      if (totalNote >= 110 && totalNote <= 200) {
+      if (totalNote >= 140 && totalNote <= 200) {
         messageDiv.textContent = "Bon profil! Allah ysakhar, vérifier le reste";
         messageDiv.className = 'alert alert-success';
-      } else if (totalNote >= 80 && totalNote < 110) {
+      } else if (totalNote >= 110 && totalNote < 140) {
         messageDiv.textContent = "Pas mal, faire attention et bien revérifier";
         messageDiv.className = 'alert alert-warning';
-      } else if (totalNote >= 60 && totalNote < 80) {
+      } else if (totalNote >= 80 && totalNote < 110) {
         messageDiv.textContent = "Hmmm il vaut mieux éviter!";
         messageDiv.className = 'alert alert-danger';
-      } else if (totalNote >= 20 && totalNote < 60) {
+      } else if (totalNote >= 20 && totalNote < 80) {
         messageDiv.textContent = "Sir 9leb 3la rask f jiha okhra hsen lik!!";
         messageDiv.className = 'alert alert-danger';
       } else {
