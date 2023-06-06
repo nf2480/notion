@@ -38,6 +38,7 @@
       color: red;
     }
   </style>
+</head>
 <body>
   <div class="container">
     <h1>Red flags checking V1.0 BETA</h1>
@@ -121,6 +122,7 @@
     </form>
     
     <div id="message"></div>
+    <div id="percentage" style="margin-top: 10px;"></div>
   </div>
   
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -203,6 +205,7 @@
       }
       
       var messageDiv = document.getElementById('message');
+      var percentageDiv = document.getElementById('percentage');
       
       if (totalNote >= 110 && totalNote <= 200) {
         messageDiv.textContent = "Bon profil! Allah ysakhar, vérifier le reste";
@@ -220,6 +223,8 @@
         messageDiv.textContent = "HREB w matchoufch lor!!!!";
         messageDiv.className = 'alert alert-danger';
       }
+      
+      percentageDiv.textContent = "Pourcentage de Totalnote: " + ((totalNote / 200) * 100).toFixed(2) + "%";
       
       return false; // Pour empêcher l'envoi du formulaire
     }
