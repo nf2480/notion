@@ -122,7 +122,7 @@
     </form>
     
     <div id="message"></div>
-    <div id="percentage" style="margin-top: 10px;"></div>
+    <div id="percentage" style="margin-top: 10px;  color: yellow;" ></div>
   </div>
   
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -209,27 +209,22 @@
       
       if (totalNote >= 110 && totalNote <= 200) {
         messageDiv.textContent = "Bon profil! Allah ysakhar, vérifier le reste";
-        percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
         messageDiv.className = 'alert alert-success';
       } else if (totalNote >= 80 && totalNote < 110) {
         messageDiv.textContent = "Pas mal, faire attention et bien revérifier";
-        percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
         messageDiv.className = 'alert alert-warning';
       } else if (totalNote >= 60 && totalNote < 80) {
         messageDiv.textContent = "Hmmm il vaut mieux éviter!";
-        percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
         messageDiv.className = 'alert alert-danger';
       } else if (totalNote >= 20 && totalNote < 60) {
         messageDiv.textContent = "Sir 9leb 3la rask f jiha okhra hsen lik!!";
-        percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
         messageDiv.className = 'alert alert-danger';
       } else {
         messageDiv.textContent = "HREB w matchoufch lor!!!!";
-        percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
         messageDiv.className = 'alert alert-danger';
       }
       
-      // percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
+      percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
       
       return false; // Pour empêcher l'envoi du formulaire
     }
