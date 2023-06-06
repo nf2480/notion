@@ -159,7 +159,15 @@
       
       totalNote += (travail === 'Non') ? 20 : -15;
       
-      totalNote += (niveauEtudes === '-BAC' || niveauEtudes === 'BAC') ? 20 : 0;
+      //totalNote += (niveauEtudes === '-BAC' || niveauEtudes === 'BAC') ? 20 : 0;
+      if (niveauEtudes === '-BAC' || niveauEtudes === 'BAC') {
+        totalNote += 20;
+      } else if (niveauEtudes === 'Bac+1 à bac +3') {
+        totalNote -= 5;
+      } else if (niveauEtudes === 'BAC+ 3 et plus') {
+      totalNote -= 10;
+      }
+
       
       totalNote += (hijabSalat === 'Oui') ? 20 : -45;
       
