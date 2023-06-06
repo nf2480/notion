@@ -161,7 +161,7 @@
           totalNote += 5;
           break;
         case 'Mauvaise':
-          totalNote += -10;
+          totalNote += -25;
           break;
       }
       
@@ -173,7 +173,7 @@
           totalNote += 5;
           break;
         case 'Mauvaise':
-          totalNote += -10;
+          totalNote += -15;
           break;
       }
       
@@ -224,7 +224,7 @@
         messageDiv.className = 'alert alert-danger';
       }
       
-      percentageDiv.textContent = "Note : " + ((totalNote / 200) * 100).toFixed(2) + "%";
+      percentageDiv.textContent = "Note : " + ((totalNote / 180) * 100).toFixed(2) + "%";
       
       return false; // Pour empêcher l'envoi du formulaire
     }
