@@ -115,6 +115,16 @@
           <option value="Veuve">Veuve</option>
         </select>
       </div>
+
+            <div class="form-group">
+        <label for="pastexp">Past experience :</label>
+        <select id="pastexp" class="form-control" required>
+          <option value="">-- Sélectionner --</option>
+          <option value="None - CLEAN">NONE - CLEAN</option>
+          <option value="Emotional Experience">Emotional experience</option>
+          <option value="Sexual Experience">Sexual Experience</option>
+        </select>
+      </div>
       
       <div class="form-group">
         <label for="facon-parler">Façon d'être et de parler :</label>
@@ -146,7 +156,7 @@
       var peregov = document.getElementById('peregov').value;
       var situation = document.getElementById('situation').value;
       var faconParler = document.getElementById('facon-parler').value;
-      
+       var pastexp = document.getElementById('pastexp').value;
       var totalNote = 0;
       
       if (age >= 16 && age <= 23) {
@@ -215,6 +225,18 @@
           totalNote += 0;
           break;
       }
+
+            switch (pastexp) {
+        case 'None - CLEAN':
+          totalNote += 5;
+          break;
+        case 'Emotional Experience':
+          totalNote += -20;
+          break;
+        case 'Sexual Experience':
+          totalNote += -75;
+          break;
+      }
       
       switch (faconParler) {
         case 'Mohtachima w mastoura':
@@ -234,20 +256,20 @@
       var messageDiv = document.getElementById('message');
       var percentageDiv = document.getElementById('percentage');
       
-      if (totalNote >= 140 && totalNote <= 200) {
-        messageDiv.textContent = "Bon profil! Allah ysakhar, vérifier le reste";
+      if (totalNote >= 140 && totalNote <= 220) {
+        messageDiv.textContent = "Excellent profile but don't hesitate to check deeply!";
         messageDiv.className = 'alert alert-success';
       } else if (totalNote >= 110 && totalNote < 140) {
-        messageDiv.textContent = "Pas mal, faire attention et bien revérifier";
+        messageDiv.textContent = "Good profile, double check deeply!";
         messageDiv.className = 'alert alert-warning';
       } else if (totalNote >= 80 && totalNote < 110) {
-        messageDiv.textContent = "Hmmm il vaut mieux éviter!";
+        messageDiv.textContent = "Poor profile quality, you can avoid this way!";
         messageDiv.className = 'alert alert-danger';
       } else if (totalNote >= 20 && totalNote < 80) {
-        messageDiv.textContent = "Sir 9leb 3la rask f jiha okhra hsen lik!!";
+        messageDiv.textContent = "Attention! Avoid this profile is better to you!!!";
         messageDiv.className = 'alert alert-danger';
       } else {
-        messageDiv.textContent = "HREB w matchoufch lor!!!!";
+        messageDiv.textContent = "EXTREME RISKY PROFIL !! MOVE AWAY!";
         messageDiv.className = 'alert alert-danger';
       }
       
