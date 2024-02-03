@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Red flags checking V1.0 BETA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: black;
+      font-family: Calibri, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+      color: red;
+    }
+
+    #message {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .warning {
+      color: yellow;
+    }
+
+    .danger {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Red flags checking V1.0 BETA</h1>
+    <form onsubmit="return calculerNote()">
+      <div class="form-group">
+        <label for="age">Age :</label>
+        <input type="number" id="age" min="1" max="100" class="form-control" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="travail">Work :</label>
+        <select id="travail" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Oui">Yes</option>
+          <option value="Non">No</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="niveau-etudes">Study level :</label>
+        <select id="niveau-etudes" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="-BAC">-BAC</option>
+          <option value="BAC">BAC</option>
+          <option value="BAC+1 à BAC +3">BAC+1 to BAC +3</option>
+          <option value="BAC+3 et plus">BAC+3 & plus</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="hijab-salat">Hijab & Salat :</label>
+        <select id="hijab-salat" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Oui">Yes</option>
+          <option value="Non">No</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="relation-pere">Relation with the father :</label>
+        <select id="relation-pere" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Bonne">Good</option>
+          <option value="Moyenne">Average</option>
+          <option value="Mauvaise">Bad</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="relation-frere">Relation with the brother :</label>
+        <select id="relation-frere" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Bonne">Good</option>
+          <option value="Moyenne">Average</option>
+          <option value="Mauvaise">Bad</option>
+        </select>
+      </div>
+      
+       <div class="form-group">
+        <label for="peregov">Father's word :</label>
+        <select id="peregov" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Alpha">Alpha (He controls)</option>
+          <option value="Beta">It's the woman who controls</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="situation">Situation :</label>
+        <select id="situation" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Célibataire">Single</option>
+          <option value="Divorcée">Divorced</option>
+          <option value="Veuve">Widow</option>
+        </select>
+      </div>
+
+            <div class="form-group">
+        <label for="pastexp">Past experience :</label>
+        <select id="pastexp" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="None - CLEAN">NONE - CLEAN</option>
+          <option value="Emotional Experience">Emotional experience</option>
+          <option value="Sexual Experience">Sexual Experience</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="facon-parler">Way of being and speaking :</label>
+        <select id="facon-parler" class="form-control" required>
+          <option value="">-- Select --</option>
+          <option value="Mohtachima w mastoura">Modest, respectful, calm, discret and chaste</option>
+          <option value="3adiya w motawaSiTa">Just normal & in the average</option>
+          <option value="Jean slim w za3ma">Jean "slim", modern & speaks a lot</option>
+          <option value="Motabarija">"Motabarija" , modern & frivolous "khfifa"</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-block">Get result</button>
+    </form>
+    
+    <div id="message"></div>
+    <div id="percentage" style="margin-top: 10px;  color: yellow;" ></div>
+  </div>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function calculerNote() {
+      var age = parseInt(document.getElementById('age').value);
+      var travail = document.getElementById('travail').value;
+      var niveauEtudes = document.getElementById('niveau-etudes').value;
+      var hijabSalat = document.getElementById('hijab-salat').value;
+      var relationPere = document.getElementById('relation-pere').value;
+      var relationFrere = document.getElementById('relation-frere').value;
+      var peregov = document.getElementById('peregov').value;
+      var situation = document.getElementById('situation').value;
+      var faconParler = document.getElementById('facon-parler').value;
+       var pastexp = document.getElementById('pastexp').value;
+      var totalNote = 0;
+      
+      if (age >= 16 && age <= 23) {
+        totalNote += 20;
+      } else if (age > 23 && age <= 26) {
+        totalNote += 10;
+      } else {
+        totalNote += 0;
+      }
+      
+      totalNote += (travail === 'Non') ? 20 : -15;
+      
+      //totalNote += (niveauEtudes === '-BAC' || niveauEtudes === 'BAC') ? 20 : 0;
+      if (niveauEtudes === '-BAC' || niveauEtudes === 'BAC') {
+        totalNote += 20;
+      } else if (niveauEtudes === 'BAC+1 à BAC +3') {
+        totalNote -= 5;
+      } else if (niveauEtudes === 'BAC+3 et plus') {
+      totalNote -= 10;
+      }
+
+      
+      totalNote += (hijabSalat === 'Oui') ? 20 : -45;
+      
+      switch (relationPere) {
+        case 'Bonne':
+          totalNote += 20;
+          break;
+        case 'Moyenne':
+          totalNote += 5;
+          break;
+        case 'Mauvaise':
+          totalNote += -25;
+          break;
+      }
+      
+      switch (relationFrere) {
+        case 'Bonne':
+          totalNote += 20;
+          break;
+        case 'Moyenne':
+          totalNote += 5;
+          break;
+        case 'Mauvaise':
+          totalNote += -15;
+          break;
+      }
+      
+       switch (peregov) {
+        case 'Alpha':
+          totalNote += 20;
+          break;
+        case 'Beta':
+          totalNote += -60;
+          break;
+      }
+      
+      switch (situation) {
+        case 'Célibataire':
+          totalNote += 0;
+          break;
+        case 'Divorcée':
+          totalNote += -70;
+          break;
+        case 'Veuve':
+          totalNote += 0;
+          break;
+      }
+
+            switch (pastexp) {
+        case 'None - CLEAN':
+          totalNote += 5;
+          break;
+        case 'Emotional Experience':
+          totalNote += -40;
+          break;
+        case 'Sexual Experience':
+          totalNote += -115;
+          break;
+      }
+      
+      switch (faconParler) {
+        case 'Mohtachima w mastoura':
+          totalNote += 20;
+          break;
+        case '3adiya w motawaSiTa':
+          totalNote += -5;
+          break;
+        case 'Jean slim w za3ma':
+          totalNote += -40;
+          break;
+        case 'Motabarija':
+          totalNote += -60;
+          break;
+      }
+      
+      var messageDiv = document.getElementById('message');
+      var percentageDiv = document.getElementById('percentage');
+      
+      if (totalNote >= 140 && totalNote <= 220) {
+        messageDiv.textContent = "Excellent profile but don't hesitate to check deeply!";
+        messageDiv.className = 'alert alert-success';
+      } else if (totalNote >= 110 && totalNote < 140) {
+        messageDiv.textContent = "Good profile, double check deeply!";
+        messageDiv.className = 'alert alert-warning';
+      } else if (totalNote >= 80 && totalNote < 110) {
+        messageDiv.textContent = "Poor profile quality, you can avoid this way!";
+        messageDiv.className = 'alert alert-danger';
+      } else if (totalNote >= 20 && totalNote < 80) {
+        messageDiv.textContent = "Attention! Avoid this profile is better to you!!!";
+        messageDiv.className = 'alert alert-danger';
+      } else {
+        messageDiv.textContent = "EXTREME RISKY PROFILE !! MOVE AWAY!";
+        messageDiv.className = 'alert alert-danger';
+      }
+      
+      percentageDiv.textContent = "Note : " + ((totalNote / 180) * 100).toFixed(2) + "%";
+      
+      return false; // Pour empêcher l'envoi du formulaire
+    }
+  </script>
+</body>
+</html>
